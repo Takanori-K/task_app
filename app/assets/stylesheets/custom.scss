@@ -52,21 +52,28 @@ p {
 
 /* ヘッダー */
 
+.navbar-inverse {
+    background-color:#008080;
+    border-color: #008080;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
   color: #fff;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 #logo:hover {
-  color: #fff;
-  text-decoration: none;
+  color: #808080;
 }
+
 
 /* デバッグウインドウ */
 
