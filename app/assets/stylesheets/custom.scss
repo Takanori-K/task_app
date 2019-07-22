@@ -71,9 +71,28 @@ p {
 }
 
 #logo:hover {
-  color: #808080;
+  color: #a9a9a9;
 }
 
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+  color: #a9a9a9;
+}
+
+/* トップページ */
+#top-main-title {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.jumbotron {
+  background-color: #fff;
+}
 
 /* デバッグウインドウ */
 
