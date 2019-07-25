@@ -84,6 +84,20 @@ p {
   color: #a9a9a9;
 }
 
+li .dropdown-header {
+  background-color: rgba(200,200,200,0.5);
+  font-weight: bold;
+}
+
+.dropdown-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: 12px;
+  line-height: 1.428571429;
+  color: #777777;
+  white-space: nowrap;
+}
+
 /* トップページ */
 #top-main-title {
   font-style: italic;
@@ -140,4 +154,21 @@ p {
   .form-control {
     color: $state-danger-text;
   }
+}
+
+/* 入力フォーム */
+.label-signup {
+  margin-top: 5px;
+}
+
+.btn-signup {
+  margin-top: 10px;
+}
+
+.label-task--edit {
+  margin-top: 5px;
+}
+
+.btn-form {
+  margin-top: 10px;
 }
