@@ -8,11 +8,24 @@
         <th class="active col-md-2">ID</th>
         <td class="col-md-10"><%= @task.id %></td>
       </tr>
-      
       <tr>
-        <th class="active">名称</th>
+        <th class="active">task_name</th>
         <td><%= @task.task_name %></td>
       </tr>
+      <tr>
+        <th class="active">details</th>
+        <td><%= @task.details %></td>
+      </tr>
+      <tr>
+        <th class="active">created_date</th>
+        <td><%= @task.created_at %></td>
+      </tr>
+      <tr>
+        <th class="active">update_date</th>
+        <td><%= @task.updated_at %></td>
+      </tr>
     </table>
+      <%= link_to "編集", edit_user_task_path(@task), class: "btn btn-lg btn-success" %>
+      <%= link_to "削除", @task, method: :delete, class: "btn btn-lg btn-danger"%>
   </div>
 </div>
