@@ -9,14 +9,16 @@ class TasksController < ApplicationController
   end
   
   def show
+    @user = User.find(params[:user_id])
     @task = Task.find(params[:id])
+    debugger
   end
   
   def create
     @task = Task.new(task_params)
     if @task.save
       flash[:success] = "新規作成に成功しました。"
-      redirect_to task_url user
+      redirect_to user_tasks_url
     else
       render 'new'
     end
@@ -36,6 +38,6 @@ class TasksController < ApplicationController
   private
     
     def task_params
-      params.require(:task).permit(:task_name, :details, :user_id)
+      params.require(:task).permit(:task_name, :details,).merge(user_id: current_user.id)
     end
 end
