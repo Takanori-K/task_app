@@ -127,6 +127,14 @@ li .dropdown-header {
   font-size: 25px;
 }
 
+/* プロフィール */
+
+#table-user th {
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+}
+
 /* デバッグウインドウ */
 
 .debug_dump {
@@ -165,10 +173,22 @@ li .dropdown-header {
   margin-top: 10px;
 }
 
+.label-user--edit {
+  margin-top: 5px;
+}
+
+
 .label-task--edit {
   margin-top: 10px;
 }
 
 .btn-form {
   margin-top: 10px;
+}
+
+/* ユーザー一覧ページ */
+#table-users {
+  td {
+    vertical-align: middle;
+  }  
 }

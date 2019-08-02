@@ -5,13 +5,13 @@ class TasksController < ApplicationController
   end
   
   def index
+    @user = User.find(params[:user_id])
     @tasks = Task.all
   end
   
   def show
     @user = User.find(params[:user_id])
     @task = Task.find(params[:id])
-    debugger
   end
   
   def create
@@ -25,14 +25,12 @@ class TasksController < ApplicationController
   end
   
   def edit
-    @task = Task.find(params[:id])
   end
   
   def destroy
-    @task = Task.find(params[:id])
-    @task.destroy
+    Task.find(params[:id]).destory
     flash[:success] ="削除しました。"
-    redirect_to tasks_url
+    redirect_to user_tasks_url
   end
   
   private

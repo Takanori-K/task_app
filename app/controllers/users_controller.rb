@@ -8,6 +8,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
+  def index
+    @users = User.paginate(page: params[:page], per_page: 20)
+  end
+  
   def create
     @user = User.new(user_params)
     if @user.save
@@ -17,6 +21,26 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+  
+  def edit
+    @user = User.find(params[:id])
+  end
+  
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "ユーザー情報を更新しました。"
+      redirect_to  @user
+    else
+      render :edit
+    end
+  end
+  
+  def destroy
+    @user.destroy
+    flash[:success] = "#{@user.name}のデータを削除しました。"
+    redirect_to users_url
   end
   
   private
