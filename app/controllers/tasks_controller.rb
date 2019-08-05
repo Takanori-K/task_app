@@ -1,21 +1,23 @@
 class TasksController < ApplicationController
   
   def new
-    @task = Task.new
+    @user = User.find(params[:user_id])
+    @task = @user.tasks.build
   end
   
   def index
     @user = User.find(params[:user_id])
-    @tasks = Task.all
+    @tasks = @user.tasks.all.order(created_at: :desc)
   end
   
   def show
     @user = User.find(params[:user_id])
-    @task = Task.find(params[:id])
+    @task = @user.tasks.find(params[:id])
   end
   
   def create
-    @task = Task.new(task_params)
+    @user = User.find(params[:user_id])
+    @task = @user.tasks.build(task_params)
     if @task.save
       flash[:success] = "新規作成に成功しました。"
       redirect_to user_tasks_url
@@ -25,10 +27,14 @@ class TasksController < ApplicationController
   end
   
   def edit
+    @user = User.find(params[:user_id])
+    @task = @user.tasks.find(params[:id])
   end
   
   def destroy
-    Task.find(params[:id]).destory
+   @user = User.find(params[:user_id])
+   @task = @user.tasks.build(params[:id])
+   @task.destroy
     flash[:success] ="削除しました。"
     redirect_to user_tasks_url
   end
@@ -36,6 +42,6 @@ class TasksController < ApplicationController
   private
     
     def task_params
-      params.require(:task).permit(:task_name, :details,).merge(user_id: current_user.id)
+      params.require(:task).permit(:task_name, :details, :user_id)
     end
 end
