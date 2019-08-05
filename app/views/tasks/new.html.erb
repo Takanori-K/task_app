@@ -3,7 +3,7 @@
 <h1>タスク新規作成</h1>
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <%= form_with(model: @task, url: user_tasks_path(current_user), local: true, method: :post) do |f| %>
+    <%= form_with(model: [@user, @task], local: true) do |f| %>
     
       <%= f.label :task_name, class: "label-signup" %>
       <%= f.text_field :task_name, class: "form-control" %>
