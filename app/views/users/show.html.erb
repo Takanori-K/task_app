@@ -11,18 +11,18 @@
         </tr>
         
         <tr>
-          <th class="active">name</th>
+          <th class="active">名前</th>
           <td class="col-md-9"><%= @user.name %></td>
         </tr>
         
         <tr>
-          <th class="active">email</th>
+          <th class="active">メールアドレス</th>
           <td class="col-md-9"><%= @user.email %></td>
         </tr>
         
         <tr>
-          <th class="active">created_at</th>
-          <td class="col-md-9"><%= @user.created_at %></td>
+          <th class="active">作成日</th>
+          <td class="col-md-9"><%= l(@user.created_at, format: :long) %></td>
         </tr>
       </thead>
     </table>

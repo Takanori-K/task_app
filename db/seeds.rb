@@ -16,7 +16,7 @@ User.create!( name: "Sample User",
                password_confirmation: password)
 end
 
-users = User.order(:created_at).take(1)
+users = User.order(:created_at).take(2)
 50.times do |n|
   task_name = "タスク#{n+1}"
   details = "タスク詳細#{n+1}"
