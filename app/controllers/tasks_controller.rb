@@ -1,5 +1,8 @@
 class TasksController < ApplicationController
   
+  before_action :logged_in_user, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+  before_action :correct_user,   only: [:new, :index, :show, :create, :edit, :update, :destroy]
+  
   def new
     @user = User.find(params[:user_id])
     @task = @user.tasks.build
@@ -36,7 +39,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.update_attributes(task_params)
       flash[:success] = "タスクを更新しました。"
-      redirect_to @user
+      redirect_to user_task_url(@user)
     else
       render 'edit'
     end
