@@ -1,6 +1,11 @@
 class SessionsController < ApplicationController
   
   def new
+    @user = User.find_by(id: session[:user_id])
+    if current_user && logged_in?
+      flash[:info] = "すでにログインしています。"
+      redirect_to @user
+    end
   end
   
   def create
@@ -8,7 +13,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_back_or user
+      redirect_to user
     else
       flash.now[:danger] = '認証に失敗しました。'
       render :new
