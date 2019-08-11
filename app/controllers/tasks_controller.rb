@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   
   before_action :logged_in_user, only: [:new, :index, :show, :create, :edit, :update, :destroy]
+  before_action :access_the_edit_page_as_a_non_logged_in_user, only: :edit
   before_action :correct_user,   only: [:new, :index, :show, :create, :edit, :update, :destroy]
   
   def new
@@ -57,5 +58,13 @@ class TasksController < ApplicationController
     
     def task_params
       params.require(:task).permit(:task_name, :details, :user_id)
+    end
+    
+    def access_the_edit_page_as_a_non_logged_in_user
+      @user = User.find(params[:user_id]) if @user.blank?
+      unless current_user?(@user)
+        flash[:danger] = "編集権限がありません。"
+        redirect_to user_tasks_url(@user)
+      end
     end
 end
