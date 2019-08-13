@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user,              only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user,        only: [:index, :edit, :update, :destroy]
+  before_action :now_logged_in_user,    only: :new
   before_action :correct_user,          only: [:edit, :update]
   before_action :admin_user,            only: [:index, :destroy]
   before_action :admin_or_correct_user, only: :show
@@ -53,5 +54,12 @@ class UsersController < ApplicationController
     
     def set_user
       @user = User.find(params[:id])
+    end
+    
+    def now_logged_in_user
+      unless current_user.admin?
+        flash[:info] = "すでにログインしています。"
+        redirect_to user_url(current_user)
+      end
     end
 end

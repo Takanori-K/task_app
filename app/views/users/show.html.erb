@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <table class="table table-bordered" id="table-user">
-      <thead>
+      <tbody>
         <tr>
           <th class="active col-md-3">ID</th>
           <td class="col-md-9"><%= @user.id %></th>
@@ -24,7 +24,7 @@
           <th class="active">作成日</th>
           <td class="col-md-9"><%= l(@user.created_at, format: :long) %></td>
         </tr>
-      </thead>
+      </tbody>
     </table>
   </div>    
 </div>
